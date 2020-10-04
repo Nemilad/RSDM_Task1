@@ -1,6 +1,11 @@
 # RSDM_Task1
 This is task 1 for a course "Software Engineering: Development Management".
 
+Due to a size of a box here is a link on google drive:
+```
+https://drive.google.com/file/d/1H2jc6fo2foN32ReOKsPUUHgqHuoBsCVU/view?usp=sharing
+```
+
 ## Installation:
   - Download and initialize vagrant box
   - Add to your hosts file two lines:
@@ -16,3 +21,6 @@ This is task 1 for a course "Software Engineering: Development Management".
   - Access sites in browser using:
     - site1vhost.com:8080
     - site2vhost.com:8080
+    
+    
+    Https is not presented
