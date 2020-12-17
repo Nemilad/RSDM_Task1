@@ -62,11 +62,24 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
 
-  # Enable provisioning with a shell script. Additional provisioners such as
-  # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
-  # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
+   # Enable provisioning with a shell script. Additional provisioners such as
+   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
+   # documentation for more information about their specific syntax and use.
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo pacman -Syu
+    sudo pacman-key --init
+    sudo pacman-key --populate archlinux
+    sudo pacman -S nano apache git pkgbuild go base-devel python-pytz
+    sudo pip install httpagentparser
+    cd /home/vagrant/
+    sudo git clone https://aur.archlinux.org/yay-git.git
+    sudo chown -R vagrant:vagrant ./yay-git
+    cd yay-git
+    sudo makepkg -si
+    cd /home/vagrant/
+    sudo git clone https://aur.archlinux.org/mod_wsgi.git
+    cd mod_wsgi
+    sudo makepkg -si
+    sudo systemctl enable httpd
+  SHELL
 end
